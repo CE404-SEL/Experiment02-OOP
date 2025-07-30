@@ -18,7 +18,11 @@ public class TelegramMessageService implements MessageService{
 
     @Override
     public void sendTelegramMessage(TelegramMessage telegramMessage) {
-
+        if(validatePhoneNumber(telegramMessage.getSourcePhoneNumber()) && validatePhoneNumber(telegramMessage.getTargetPhoneNumber())){
+            System.out.println("Sending a Telegram message from " + telegramMessage.getSourcePhoneNumber() + " to " + telegramMessage.getTargetPhoneNumber() + " with content : " + telegramMessage.getContent());
+        }else{
+            throw new IllegalArgumentException("Phone Number is Not Correct!");
+        }
     }
 
     private boolean validatePhoneNumber(String phoneNumber) {
