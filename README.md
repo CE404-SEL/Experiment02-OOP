@@ -12,6 +12,17 @@
     </thead>
     <tbody>
         <tr>
+            <td style="border: 1px solid #ddd; padding: 12px; text-align: center; font-weight: bold;">Single Responsibility Principle</td>
+            <td style="border: 1px solid #ddd; padding: 12px; text-align: right;">
+                • کلاس <code>Message</code> به SRP پایبند است زیرا فقط محتوای پیام اصلی را مدیریت می‌کند<br>
+                • کلاس‌های مدل (<code>EmailMessage</code>، <code>SmsMessage</code>) هر کدام مسئولیت خاص خود را دارند
+            </td>
+            <td style="border: 1px solid #ddd; padding: 12px; text-align: right;">
+                • کلاس‌های سرویس (<code>EmailMessageService</code>، <code>SmsMessageService</code>) با ترکیب منطق ارسال پیام با validation، SRP را نقض می‌کنند<br>
+                • کلاس <code>Main</code> مسئولیت‌های متعددی دارد: دریافت ورودی، ایجاد پیام، انتخاب سرویس و ارسال پیام
+            </td>
+        </tr>
+        <tr>
             <td style="border: 1px solid #ddd; padding: 12px; text-align: center; font-weight: bold;">Open/Closed Principle</td>
             <td style="border: 1px solid #ddd; padding: 12px; text-align: right;">
                 • کلاس‌های <code>EmailMessage</code> و <code>SmsMessage</code> از کلاس <code>Message</code> ارث‌بری می‌کنند و آن را گسترش می‌دهند
@@ -56,7 +67,7 @@
             <td style="border: 1px solid #ddd; padding: 12px; text-align: right;">
                 • عدم استفاده از Dependency Injection<br>
                 • وابستگی مستقیم به کلاس‌های عینی به جای انتزاعی
-                br>
+                <br>
                 • کلاس <code>Main</code> مستقیماً به پیاده‌سازی‌های مشخص (<code>EmailMessageService</code>، <code>SmsMessageService</code>) بستگی دارد، نه فقط به انتزاع (<code>MessageService</code>)
             </td>
         </tr>
