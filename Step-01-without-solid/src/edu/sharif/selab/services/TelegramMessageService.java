@@ -4,20 +4,10 @@ import edu.sharif.selab.models.EmailMessage;
 import edu.sharif.selab.models.SmsMessage;
 import edu.sharif.selab.models.TelegramMessage;
 
-public class TelegramMessageService implements MessageService{
+public class TelegramMessageService implements MessageService<TelegramMessage>{
 
     @Override
-    public void sendSmsMessage(SmsMessage smsMessage) {
-        //Empty Body
-    }
-
-    @Override
-    public void sendEmailMessage(EmailMessage emailMessage) {
-        //Empty Body!
-    }
-
-    @Override
-    public void sendTelegramMessage(TelegramMessage telegramMessage) {
+    public void sendMessage(TelegramMessage telegramMessage) {
         if(validatePhoneNumber(telegramMessage.getSourcePhoneNumber()) && validatePhoneNumber(telegramMessage.getTargetPhoneNumber())){
             System.out.println("Sending a Telegram message from " + telegramMessage.getSourcePhoneNumber() + " to " + telegramMessage.getTargetPhoneNumber() + " with content : " + telegramMessage.getContent());
         }else{

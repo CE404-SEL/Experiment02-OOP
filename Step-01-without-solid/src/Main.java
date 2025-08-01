@@ -76,13 +76,13 @@ public class Main {
 
             if(message instanceof SmsMessage){
                 messageService = new SmsMessageService();
-                messageService.sendSmsMessage((SmsMessage) message);
+                messageService.sendMessage((SmsMessage) message);
             }else if(message instanceof EmailMessage){
                 messageService = new EmailMessageService();
-                messageService.sendEmailMessage((EmailMessage) message);
+                messageService.sendMessage((EmailMessage) message);
             }else if(message instanceof TelegramMessage){
                 messageService = new TelegramMessageService();
-                messageService.sendTelegramMessage((TelegramMessage) message);
+                messageService.sendMessage((TelegramMessage) message);
             }
 
         }while (true);
