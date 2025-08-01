@@ -3,32 +3,16 @@ package edu.sharif.selab.services;
 import edu.sharif.selab.models.EmailMessage;
 import edu.sharif.selab.models.SmsMessage;
 import edu.sharif.selab.models.TelegramMessage;
+import edu.sharif.selab.services.Validator;
 
 public class TelegramMessageService implements MessageService<TelegramMessage>{
 
     @Override
     public void sendMessage(TelegramMessage telegramMessage) {
-        if(validatePhoneNumber(telegramMessage.getSourcePhoneNumber()) && validatePhoneNumber(telegramMessage.getTargetPhoneNumber())){
+        if(Validator.validatePhoneNumber(telegramMessage.getSourcePhoneNumber()) && Validator.validatePhoneNumber(telegramMessage.getTargetPhoneNumber())){
             System.out.println("Sending a Telegram message from " + telegramMessage.getSourcePhoneNumber() + " to " + telegramMessage.getTargetPhoneNumber() + " with content : " + telegramMessage.getContent());
         }else{
             throw new IllegalArgumentException("Phone Number is Not Correct!");
         }
-    }
-
-    private boolean validatePhoneNumber(String phoneNumber) {
-        // Check if the phone number is exactly 11 characters long
-        if (phoneNumber.length() != 11) {
-            return false; // Phone number length is not valid
-        }
-
-        // Check if the phone number contains only numeric digits
-        for (char digit : phoneNumber.toCharArray()) {
-            if (!Character.isDigit(digit)) {
-                return false; // Phone number contains non-numeric characters
-            }
-        }
-
-        // If all checks pass, return true (valid phone number)
-        return true;
     }
 }

@@ -3,28 +3,17 @@ package edu.sharif.selab.services;
 import edu.sharif.selab.models.EmailMessage;
 import edu.sharif.selab.models.SmsMessage;
 import edu.sharif.selab.models.TelegramMessage;
-
+import edu.sharif.selab.services.Validator;
 import java.util.regex.Pattern;
 
 public class EmailMessageService implements MessageService<EmailMessage>{
 
     @Override
     public void sendMessage(EmailMessage emailMessage) {
-        if(validateEmailAddress(emailMessage.getSourceEmailAddress()) && validateEmailAddress(emailMessage.getTargetEmailAddress())){
+        if(Validator.validateEmailAddress(emailMessage.getSourceEmailAddress()) && Validator.validateEmailAddress(emailMessage.getTargetEmailAddress())){
             System.out.println("Sending a SMS from " + emailMessage.getSourceEmailAddress() + " to " + emailMessage.getTargetEmailAddress() + " with content : " + emailMessage.getContent());
         }else{
             throw new IllegalArgumentException("Email Address is Not Correct!");
         }
-    }
-
-    public boolean validateEmailAddress(String email) {
-        // Regular expression pattern for validating email addresses
-        String emailRegex = "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$";
-
-        // Compile the pattern into a regex Pattern object
-        Pattern pattern = Pattern.compile(emailRegex);
-
-        // Check if the email string matches the regex pattern
-        return pattern.matcher(email).matches();
     }
 }
