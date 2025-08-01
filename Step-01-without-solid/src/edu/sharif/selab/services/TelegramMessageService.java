@@ -4,14 +4,11 @@ import edu.sharif.selab.models.EmailMessage;
 import edu.sharif.selab.models.SmsMessage;
 import edu.sharif.selab.models.TelegramMessage;
 
-public class SmsMessageService implements MessageService{
+public class TelegramMessageService implements MessageService{
+
     @Override
     public void sendSmsMessage(SmsMessage smsMessage) {
-        if(validatePhoneNumber(smsMessage.getSourcePhoneNumber()) && validatePhoneNumber(smsMessage.getTargetPhoneNumber())){
-            System.out.println("Sending a SMS from " + smsMessage.getSourcePhoneNumber() + " to " + smsMessage.getTargetPhoneNumber() + " with content : " + smsMessage.getContent());
-        }else{
-            throw new IllegalArgumentException("Phone Number is Not Correct!");
-        }
+        //Empty Body
     }
 
     @Override
@@ -21,7 +18,11 @@ public class SmsMessageService implements MessageService{
 
     @Override
     public void sendTelegramMessage(TelegramMessage telegramMessage) {
-        //Empty Body
+        if(validatePhoneNumber(telegramMessage.getSourcePhoneNumber()) && validatePhoneNumber(telegramMessage.getTargetPhoneNumber())){
+            System.out.println("Sending a Telegram message from " + telegramMessage.getSourcePhoneNumber() + " to " + telegramMessage.getTargetPhoneNumber() + " with content : " + telegramMessage.getContent());
+        }else{
+            throw new IllegalArgumentException("Phone Number is Not Correct!");
+        }
     }
 
     private boolean validatePhoneNumber(String phoneNumber) {
