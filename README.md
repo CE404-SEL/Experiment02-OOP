@@ -73,3 +73,71 @@
         </tr>
     </tbody>
 </table>
+
+## جدول راه‌حل‌های پیشنهادی برای رفع نقض اصول SOLID
+
+<table dir="rtl" style="width: 100%; border-collapse: collapse; margin: 20px 0;">
+    <thead>
+        <tr style="background-color: #f5f5f5;color:black;">
+            <th style="border: 1px solid #ddd; padding: 12px; text-align: center; font-weight: bold;">اصل مربوطه</th>
+            <th style="border: 1px solid #ddd; padding: 12px; text-align: center; font-weight: bold;">علت نقض</th>
+            <th style="border: 1px solid #ddd; padding: 12px; text-align: center; font-weight: bold;">راه حل پیشنهادی</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 12px; text-align: center; font-weight: bold;">Single Responsibility Principle</td>
+            <td style="border: 1px solid #ddd; padding: 12px; text-align: right;">
+                • کلاس‌های سرویس منطق ارسال و validation را ترکیب کرده‌اند<br>
+                • کلاس <code>Main</code> مسئولیت‌های متعددی دارد
+            </td>
+            <td style="border: 1px solid #ddd; padding: 12px; text-align: right;">
+                • ایجاد کلاس‌های جداگانه برای validation: <code>EmailValidator</code> و <code>SmsValidator</code><br>
+                • جداسازی منطق UI از منطق کسب‌وکار در کلاس <code>Main</code><br>
+            </td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 12px; text-align: center; font-weight: bold;">Open/Closed Principle</td>
+            <td style="border: 1px solid #ddd; padding: 12px; text-align: right;">
+                • استفاده از <code>instanceof</code> و <code>switch</code> در <code>Main</code><br>
+                • تغییر رفتار در کلاس‌های سرویس
+            </td>
+            <td style="border: 1px solid #ddd; padding: 12px; text-align: right;">
+                • ایجاد Factory Pattern برای ساخت پیام‌ها<br>
+            </td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 12px; text-align: center; font-weight: bold;">Liskov Substitution Principle</td>
+            <td style="border: 1px solid #ddd; padding: 12px; text-align: right;">
+                • متدهای خالی در کلاس‌های سرویس<br>
+                • وابستگی به زیرکلاس‌های خاص
+            </td>
+            <td style="border: 1px solid #ddd; padding: 12px; text-align: right;">
+                • حذف متدهای غیرضروری<br>
+                • استفاده از Generic Types برای کاهش وابستگی به نوع خاص
+            </td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 12px; text-align: center; font-weight: bold;">Interface Segregation Principle</td>
+            <td style="border: 1px solid #ddd; padding: 12px; text-align: right;">
+                • کلاس‌ها مجبور به پیاده‌سازی متدهای غیرضروری هستند<br>
+                • رابط <code>MessageService</code> بیش از حد بزرگ است
+            </td>
+            <td style="border: 1px solid #ddd; padding: 12px; text-align: right;">
+                • فقط یک متد <code>sendMessage</code>
+                داشته باشیم.
+            </td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 12px; text-align: center; font-weight: bold;">Dependency Inversion Principle</td>
+            <td style="border: 1px solid #ddd; padding: 12px; text-align: right;">
+                • وابستگی مستقیم به کلاس‌های عینی<br>
+                • عدم استفاده از Dependency Injection
+            </td>
+            <td style="border: 1px solid #ddd; padding: 12px; text-align: right;">
+                • استفاده از Factory Pattern<br>
+                • استفاده از dispatcher <br>
+            </td>
+        </tr>
+    </tbody>
+</table>
