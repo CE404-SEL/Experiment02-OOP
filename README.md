@@ -1,6 +1,111 @@
 # آزمایش دوم | اصول شی‌گرایی
 
-## جدول تحلیل اصول SOLID 
+## جدول تغییرات پروژه برای اضافه کردن امکان پیام با تلگرام
+
+<table dir="rtl" style="width: 100%; border-collapse: collapse; margin: 20px 0;">
+    <thead>
+        <tr style="background-color: #f5f5f5;color:black;">
+            <th style="border: 1px solid #ddd; padding: 12px; text-align: center; font-weight: bold;">ردیف</th>
+            <th style="border: 1px solid #ddd; padding: 12px; text-align: center; font-weight: bold;">محل اعمال تغیرات (کلاس/واسط)</th>
+            <th style="border: 1px solid #ddd; padding: 12px; text-align: center; font-weight: bold;">عنوان تغییر</th>
+            <th style="border: 1px solid #ddd; padding: 12px; text-align: center; font-weight: bold;">شرحی کوتاه از تغییر</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 12px; text-align: center; font-weight: bold;">1</td>
+            <td style="border: 1px solid #ddd; padding: 12px; text-align: center; font-weight: bold;">MessageService</td>
+            <td style="border: 1px solid #ddd; padding: 12px; text-align: right;">
+                افزودن تابع ارسال پیام تلگرامی
+            </td>
+            <td style="border: 1px solid #ddd; padding: 12px; text-align: right;">
+                افزودن یک تابع void با عنوان sendTelegramMessage که پارامتر TelegramMessage می‌پذیرد
+            </td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 12px; text-align: center; font-weight: bold;">2</td>
+            <td style="border: 1px solid #ddd; padding: 12px; text-align: center; font-weight: bold;">TelegramMessage</td>
+            <td style="border: 1px solid #ddd; padding: 12px; text-align: right;">
+                ایجاد کلاس مدل پیام تلگرام
+            </td>
+            <td style="border: 1px solid #ddd; padding: 12px; text-align: right;">
+                ایجاد کلاس TelegramMessage که از Message ارث‌بری می‌کند و دارای فیلدهای sourcePhoneNumber و targetPhoneNumber است
+            </td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 12px; text-align: center; font-weight: bold;">3</td>
+            <td style="border: 1px solid #ddd; padding: 12px; text-align: center; font-weight: bold;">TelegramMessageService</td>
+            <td style="border: 1px solid #ddd; padding: 12px; text-align: right;">
+                ایجاد سرویس ارسال پیام تلگرام
+            </td>
+            <td style="border: 1px solid #ddd; padding: 12px; text-align: right;">
+                ایجاد کلاس TelegramMessageService که MessageService را پیاده‌سازی می‌کند و شامل منطق ارسال پیام تلگرام و اعتبارسنجی شماره تلفن است
+            </td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 12px; text-align: center; font-weight: bold;">4</td>
+            <td style="border: 1px solid #ddd; padding: 12px; text-align: center; font-weight: bold;">EmailMessageService</td>
+            <td style="border: 1px solid #ddd; padding: 12px; text-align: right;">
+                پیاده‌سازی تابع sendTelegramMessage
+            </td>
+            <td style="border: 1px solid #ddd; padding: 12px; text-align: right;">
+                افزودن پیاده‌سازی خالی برای تابع sendTelegramMessage جهت رعایت قرارداد واسط MessageService
+            </td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 12px; text-align: center; font-weight: bold;">5</td>
+            <td style="border: 1px solid #ddd; padding: 12px; text-align: center; font-weight: bold;">SmsMessageService</td>
+            <td style="border: 1px solid #ddd; padding: 12px; text-align: right;">
+                پیاده‌سازی تابع sendTelegramMessage
+            </td>
+            <td style="border: 1px solid #ddd; padding: 12px; text-align: right;">
+                افزودن پیاده‌سازی خالی برای تابع sendTelegramMessage جهت رعایت قرارداد واسط MessageService
+            </td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 12px; text-align: center; font-weight: bold;">6</td>
+            <td style="border: 1px solid #ddd; padding: 12px; text-align: center; font-weight: bold;">Main</td>
+            <td style="border: 1px solid #ddd; padding: 12px; text-align: right;">
+                افزودن گزینه ارسال پیام تلگرام به منو
+            </td>
+            <td style="border: 1px solid #ddd; padding: 12px; text-align: right;">
+                افزودن گزینه شماره 3 برای ارسال پیام تلگرام به منوی اصلی برنامه
+            </td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 12px; text-align: center; font-weight: bold;">7</td>
+            <td style="border: 1px solid #ddd; padding: 12px; text-align: center; font-weight: bold;">Main</td>
+            <td style="border: 1px solid #ddd; padding: 12px; text-align: right;">
+                افزودن case 3 به switch statement
+            </td>
+            <td style="border: 1px solid #ddd; padding: 12px; text-align: right;">
+                افزودن case 3 برای دریافت اطلاعات پیام تلگرام از کاربر و ایجاد شیء TelegramMessage
+            </td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 12px; text-align: center; font-weight: bold;">8</td>
+            <td style="border: 1px solid #ddd; padding: 12px; text-align: center; font-weight: bold;">Main</td>
+            <td style="border: 1px solid #ddd; padding: 12px; text-align: right;">
+                افزودن شرط TelegramMessage به if-else
+            </td>
+            <td style="border: 1px solid #ddd; padding: 12px; text-align: right;">
+                افزودن شرط else if برای بررسی نوع TelegramMessage و ایجاد TelegramMessageService مناسب
+            </td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 12px; text-align: center; font-weight: bold;">9</td>
+            <td style="border: 1px solid #ddd; padding: 12px; text-align: center; font-weight: bold;">Main</td>
+            <td style="border: 1px solid #ddd; padding: 12px; text-align: right;">
+                افزودن import برای TelegramMessage
+            </td>
+            <td style="border: 1px solid #ddd; padding: 12px; text-align: right;">
+                افزودن دستور import برای کلاس TelegramMessage و TelegramMessageService
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+## جدول تحلیل اصول SOLID
 
 <table dir="rtl" style="width: 100%; border-collapse: collapse; margin: 20px 0;">
     <thead>
