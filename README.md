@@ -94,7 +94,6 @@
             <td style="border: 1px solid #ddd; padding: 12px; text-align: right;">
                 • ایجاد کلاس‌های جداگانه برای validation: <code>EmailValidator</code> و <code>SmsValidator</code><br>
                 • جداسازی منطق UI از منطق کسب‌وکار در کلاس <code>Main</code><br>
-                • ایجاد کلاس‌های <code>MessageFactory</code> و <code>ServiceFactory</code>
             </td>
         </tr>
         <tr>
@@ -104,9 +103,7 @@
                 • تغییر رفتار در کلاس‌های سرویس
             </td>
             <td style="border: 1px solid #ddd; padding: 12px; text-align: right;">
-                • استفاده از Strategy Pattern برای انتخاب سرویس<br>
                 • ایجاد Factory Pattern برای ساخت پیام‌ها<br>
-                • استفاده از Template Method Pattern در کلاس‌های سرویس
             </td>
         </tr>
         <tr>
@@ -116,8 +113,7 @@
                 • وابستگی به زیرکلاس‌های خاص
             </td>
             <td style="border: 1px solid #ddd; padding: 12px; text-align: right;">
-                • ایجاد رابط‌های جداگانه: <code>SmsService</code> و <code>EmailService</code><br>
-                • پیاده‌سازی کامل تمام متدها یا حذف متدهای غیرضروری<br>
+                • حذف متدهای غیرضروری<br>
                 • استفاده از Generic Types برای کاهش وابستگی به نوع خاص
             </td>
         </tr>
@@ -128,9 +124,8 @@
                 • رابط <code>MessageService</code> بیش از حد بزرگ است
             </td>
             <td style="border: 1px solid #ddd; padding: 12px; text-align: right;">
-                • تفکیک رابط <code>MessageService</code> به رابط‌های کوچک‌تر<br>
-                • ایجاد <code>SmsService</code> و <code>EmailService</code> جداگانه<br>
-                • استفاده از Default Methods در رابط‌ها
+                • فقط یک متد <code>sendMessage</code>
+                داشته باشیم.
             </td>
         </tr>
         <tr>
@@ -140,10 +135,8 @@
                 • عدم استفاده از Dependency Injection
             </td>
             <td style="border: 1px solid #ddd; padding: 12px; text-align: right;">
-                • پیاده‌سازی Dependency Injection Container<br>
-                • استفاده از Constructor Injection در کلاس <code>Main</code><br>
-                • ایجاد Service Locator Pattern<br>
-                • استفاده از Abstract Factory Pattern
+                • استفاده از Factory Pattern<br>
+                • استفاده از dispatcher <br>
             </td>
         </tr>
     </tbody>
